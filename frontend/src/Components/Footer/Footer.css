@@ -1,0 +1,44 @@
+.footer {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: clamp(1.5rem, 4vw, 2.5rem);
+  padding: 4rem 5% 2rem 5%;
+}
+
+.footer-links {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  list-style: none;
+  gap: clamp(1rem, 3vw, 2rem);
+}
+
+.footer-social-icon {
+  display: flex;
+  gap: 1.25rem;
+}
+
+.footer-copyright {
+  width: 100%;
+  text-align: center;
+}
+
+@media (max-width: 768px) {
+  .footer {
+    padding: 3rem 4% 1.5rem 4%;
+  }
+  
+  .footer-links {
+    gap: 1.5rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .footer-links {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    text-align: center;
+    gap: 1rem;
+  }
+}
