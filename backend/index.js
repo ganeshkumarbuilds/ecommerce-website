@@ -5,12 +5,28 @@ const cors = require("cors");
 const { Sequelize, DataTypes } = require("sequelize");
 require("dotenv").config();
 const jwt = require("jsonwebtoken");
+const cloudinary = require('cloudinary').v2;
+const { CloudinaryStorage } = require('multer-storage-cloudinary');
 
 const app = express();
 const PORT = process.env.PORT || 4000;
 
+
 app.use(express.json());
 app.use(cors());
+
+
+cloudinary.config({
+  cloud_name: 'dc9gxgpvo',
+  api_key: '993284882248649',
+  api_secret: 'DhQLFKV4tERQ5OR4h_OyDwPM5rk'
+});
+
+const storage = new CloudinaryStorage({
+  cloudinary: cloudinary,
+  params: { folder: 'ecommerce_products' }
+});
+
 
 const sequelize = new Sequelize(
   process.env.DB_NAME,
@@ -23,25 +39,14 @@ const sequelize = new Sequelize(
   }
 );
 
-const storage = multer.diskStorage({
-  destination: "./upload/images",
-  filename: (req, file, cb) => {
-    return cb(
-      null,
-      `${file.fieldname}_${Date.now()}${path.extname(file.originalname)}`
-    );
-  },
-});
-
 const upload = multer({ storage: storage });
 
-app.use("/images", express.static("upload/images"));
 
 app.post("/upload", upload.single("product"), (req, res) => {
-  res.json({
-    success: 1,
-    image_url: `https://ecommerce-website-backend-xmvr.onrender.com/images/${req.file.filename}`,
-  });
+    res.json({
+        success: 1,
+        image_url: req.file.path 
+    });
 });
 
 const Product = sequelize.define("Product", {
