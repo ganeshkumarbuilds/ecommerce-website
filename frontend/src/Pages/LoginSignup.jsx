@@ -15,7 +15,7 @@ const LoginSignup = () => {
   }
   const login = async () => {
   console.log("Login Function Executed", formData);
-  const response = await fetch('http://localhost:4000/login', {
+  const response = await fetch('https://ecommerce-website-backend-xmvr.onrender.com/login', {
     method: 'POST',
     headers: {
       Accept: 'application/form-data',
@@ -34,7 +34,7 @@ const LoginSignup = () => {
 
 const signup = async () => {
   console.log("SignUp Function Executed", formData);
-  const response = await fetch('http://localhost:4000/signup', {
+  const response = await fetch('https://ecommerce-website-backend-xmvr.onrender.com/signup', {
     method: 'POST',
     headers: {
       Accept: 'application/form-data',
