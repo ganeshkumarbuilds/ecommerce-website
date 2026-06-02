@@ -11,17 +11,18 @@ const Hero = () => {
             <h2>NEW ARRIVALS ONLY</h2>
             <div>
                 <div className="hero-hand-icon">
-                    <p>new</p>
                     <img src={hand_icon} alt="" />
 
                 </div>
-                <p>collection</p>
-                <p>for everyone</p>
+                <ul class="quote-list">
+  <li>UNLEASH THE RAW ENERGY</li>
+  <li>DON'T POSTPONE YOUR STYLE</li>
+  <li>STEP INTO THE FUTURE</li>
+  <li>COP THE NEW LOOK</li>
+</ul>
+                
             </div>
-            <div className="hero-latest-btn">
-                <div>Latest Collection</div>
-                <img src={arrow_icon} alt="" />
-            </div>
+            
 
         </div>
         <div className="hero-right">

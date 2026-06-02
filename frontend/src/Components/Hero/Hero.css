@@ -52,6 +52,17 @@
   animation: waveHand 2.5s ease-in-out infinite;
   transform-origin: 70% 70%;
 }
+.quote-list {
+  list-style-type: disc;
+  padding-left: 20px;
+  text-align: left;
+}
+
+.quote-list li {
+  margin-bottom: 10px;
+  font-weight: bold;
+  font-size: 20px;
+}
 
 .hero-latest-btn {
   display: inline-flex;

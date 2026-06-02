@@ -7,7 +7,7 @@ require("dotenv").config();
 const jwt = require("jsonwebtoken");
 
 const app = express();
-const port = process.env.PORT || 4000;
+const PORT = process.env.PORT || 4000;
 
 app.use(express.json());
 app.use(cors());
@@ -39,7 +39,7 @@ app.use("/images", express.static("upload/images"));
 app.post("/upload", upload.single("product"), (req, res) => {
   res.json({
     success: 1,
-    image_url: `http://localhost:${port}/images/${req.file.filename}`,
+    image_url: `http://localhost:${PORT}/images/${req.file.filename}`,
   });
 });
 
@@ -110,7 +110,6 @@ app.get("/", (req, res) => {
   res.send("Express App is Running");
 });
 
-// User Model
 const User = sequelize.define('User', {
   name: Sequelize.STRING,
   email: { type: Sequelize.STRING, unique: true, allowNull: false },
@@ -119,7 +118,6 @@ const User = sequelize.define('User', {
   date: { type: Sequelize.DATE, defaultValue: Sequelize.NOW }
 });
 
-// Signup Route
 app.post('/signup', async (req, res) => {
   const check = await User.findOne({ where: { email: req.body.email } });
 
@@ -221,9 +219,9 @@ app.post('/getcart', fetchUser, async (req, res) => {
 
 
 sequelize.sync().then(() => {
-  app.listen(port, (error) => {
+  app.listen(PORT, (error) => {
     if (!error) {
-      console.log("Server Running On Port " + port);
+      console.log("Server Running On Port " + PORT);
       console.log("MySQL Connected Successfully!");
     } else {
       console.log("Error: " + error);
