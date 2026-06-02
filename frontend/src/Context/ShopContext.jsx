@@ -38,6 +38,7 @@ const ShopContextProvider = (props) => {
     
     const addToCart = (itemId) => {
         setCartItems((prev)=>({...prev,[itemId]:prev[itemId]+1}));
+        alert("Item added to cart!✅");
         if(localStorage.getItem('auth-token')){
             fetch('https://ecommerce-website-backend-xmvr.onrender.com/addtocart',{
                 method:'POST',
