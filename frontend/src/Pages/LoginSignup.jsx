@@ -26,9 +26,10 @@ const LoginSignup = () => {
   const responseData = await response.json();
   if (responseData.success) {
     localStorage.setItem('auth-token', responseData.token);
+    alert("Welcome back!👋");
     window.location.replace("/");
   } else {
-    alert(responseData.error);
+    alert("❌ Login failed! " + responseData.error);
   }
 }
 
@@ -45,9 +46,10 @@ const signup = async () => {
   const responseData = await response.json();
   if (responseData.success) {
     localStorage.setItem('auth-token', responseData.token);
+    alert("Account created successfully!✅");
     window.location.replace("/");
   } else {
-    alert(responseData.error);
+    alert("❌ " + responseData.error);
   }
 }
   return (
